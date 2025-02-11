@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate</title>
+
+    <style>
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    height: 100;
+    margin: 0;
+}
+
+.container {
+    border: 2px solid red;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+            
+    </style>
+    <script>
+        function me(obj){
+            return document.getElementById(obj);
+        }
+        function calculate(){
+            var usage = parseFloat(me("usage").value);
+            var rate = 0;
+            if(me("usage").value == ""){
+                alert("Please enter your usage");
+            }
+            else if (usage > 200 ){
+                rate = 2000;
+            }
+            else if(usage > 150){
+                rate = 1500;
+            }
+            else if(usage > 100){
+                rate = 1000;
+            }
+            else{
+                rate = 500;
+            }
+            var total_payment = rate * usage;
+            me("total_riels").value = total_payment +  " KHR";
+            me("total_dollars").value = total_payment / 4000 + " USD";
+
+            
+        }
+        function Clear(){
+            me("usage").value = "";
+            me("total_riels").value = "";
+            me("total_dollars").value = "";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome EDC's Electricty Calculate</h2>
+
+        <label>Amount of Usage: </label>
+        <input type="text" id="usage" > KWH <br><br>
+
+        <label>Total Payment</label> 
+        <input type="text" id="total_riels" readonly style="margin-left: 25px;"> Riels<br><br>
+
+        <input type="text" id="total_dollars" readonly style="margin-left: 140px;"> Dollars<br><br>
+
+        <button onclick="calculate()" style="margin-left: 120px;">Calculate</button>
+
+        <button onclick="Clear()">Clear</button>
+    </div>
+
+</body>
+</html>
